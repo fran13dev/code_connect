@@ -1,8 +1,8 @@
 const express = require('express'),
-  PORT = process.env.PORT || 5000,
-  connectDB = require('./config/db'),
-  helmet = require('helmet'),
-  path = require('path')
+	PORT = process.env.PORT || 5000,
+	connectDB = require('./config/db'),
+	helmet = require('helmet'),
+	path = require('path')
 
 const app = express()
 
@@ -21,12 +21,12 @@ app.use('/api/posts', require('./routes/api/posts'))
 
 // serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-  // set static folder
-  app.use(express.static('client/build'))
+	// set static folder
+	app.use(express.static('client/build'))
 
-  app.get('*', (req, res) => {
-    res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
+	app.get('*', (req, res) => {
+		res.sendfile(path.resolve(__dirname, 'client/build', 'index.html'))
+	})
 }
 
 app.listen(PORT, () => console.log(`Server is listening on port: ${PORT}`))
